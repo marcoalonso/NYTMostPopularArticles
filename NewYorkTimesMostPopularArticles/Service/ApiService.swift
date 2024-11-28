@@ -7,11 +7,33 @@
 
 import Foundation
 import Combine
-enum APIServiceError: Error {
+
+enum APIServiceError: Error, LocalizedError {
     case invalidURL
     case responseError
     case decodingError
+    case networkError(Error)
+    case serverError(Int)
+    case unknownError
+
+    var errorDescription: String? {
+        switch self {
+        case .invalidURL:
+            return "The URL is invalid. Please try again."
+        case .responseError:
+            return "Failed to fetch data from the server. Please check your connection."
+        case .decodingError:
+            return "Failed to process the data received."
+        case .networkError(let error):
+            return error.localizedDescription
+        case .serverError(let code):
+            return "Server responded with an error: \(code)."
+        case .unknownError:
+            return "An unknown error occurred. Please try again later."
+        }
+    }
 }
+
 class APIService {
     private let baseUrl = "https://api.nytimes.com/svc/mostpopular/v2/"
     private var apiKey: String {
