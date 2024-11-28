@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6C154FF52CF9364F00B73CBC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6C154FF42CF9364F00B73CBC /* Kingfisher */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		6C154FB02CF90D0600B73CBC /* NewYorkTimesMostPopularArticles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewYorkTimesMostPopularArticles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C154FF52CF9364F00B73CBC /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = NewYorkTimesMostPopularArticles;
 			packageProductDependencies = (
+				6C154FF42CF9364F00B73CBC /* Kingfisher */,
 			);
 			productName = NewYorkTimesMostPopularArticles;
 			productReference = 6C154FB02CF90D0600B73CBC /* NewYorkTimesMostPopularArticles.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 6C154FA72CF90D0600B73CBC;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6C154FF32CF9364F00B73CBC /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6C154FB12CF90D0600B73CBC /* Products */;
 			projectDirPath = "";
@@ -324,6 +333,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6C154FF32CF9364F00B73CBC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6C154FF42CF9364F00B73CBC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C154FF32CF9364F00B73CBC /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6C154FA82CF90D0600B73CBC /* Project object */;
 }

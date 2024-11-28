@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct NewYorkTimesMostPopularArticlesApp: App {
+    @StateObject private var viewModel = ArticlesViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ArticlesListView()
+                .environmentObject(viewModel)
         }
     }
 }
