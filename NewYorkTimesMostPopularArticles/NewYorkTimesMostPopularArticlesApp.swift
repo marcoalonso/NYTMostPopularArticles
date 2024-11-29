@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct NewYorkTimesMostPopularArticlesApp: App {
-    @StateObject private var viewModel = ArticlesViewModel()
+    @StateObject private var viewModel = ArticlesViewModel(apiService: APIService())
     
     var body: some Scene {
         WindowGroup {

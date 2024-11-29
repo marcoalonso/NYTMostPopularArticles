@@ -34,7 +34,7 @@ enum APIServiceError: Error, LocalizedError {
     }
 }
 
-class APIService {
+class APIService: APIServiceProtocol {
     private let baseUrl = "https://api.nytimes.com/svc/mostpopular/v2/"
     private var apiKey: String {
         loadAPIKey()
@@ -45,15 +45,23 @@ class APIService {
             return Fail(error: APIServiceError.invalidURL)
                 .eraseToAnyPublisher()
         }
+
         return URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data)
+            .tryMap { output -> Data in
+                guard let response = output.response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                    throw APIServiceError.serverError((output.response as? HTTPURLResponse)?.statusCode ?? -1)
+                }
+                return output.data
+            }
             .decode(type: Response.self, decoder: JSONDecoder())
             .map(\.results)
-            .mapError { error in
-                if error is DecodingError {
-                    return APIServiceError.decodingError
+            .mapError { error -> APIServiceError in
+                if let error = error as? APIServiceError {
+                    return error
+                } else if error is DecodingError {
+                    return .decodingError
                 } else {
-                    return APIServiceError.responseError
+                    return .networkError(error)
                 }
             }
             .eraseToAnyPublisher()
