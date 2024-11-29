@@ -11,25 +11,50 @@ import SwiftData
 struct FavouriteArticlesView: View {
     @Query private var favouriteArticles: [FavouriteArticle]
     @Environment(\.modelContext) private var modelContext
+    @State private var showAlert = false
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(favouriteArticles, id: \.id) { article in
-                    NavigationLink(destination: ArticleDetailView(article: ArticleMapper.mapToDTO(from: article))) {
-                        VStack(alignment: .leading) {
-                            Text(article.title)
-                                .font(.headline)
-                            Text(article.byline)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
+            VStack {
+                if favouriteArticles.isEmpty {
+                    Text("No favourite articles to display.")
+                        .foregroundColor(.gray)
+                        .padding()
+                } else {
+                    List {
+                        ForEach(favouriteArticles, id: \.id) { article in
+                            NavigationLink(destination: ArticleDetailView(article: ArticleMapper.mapToDTO(from: article))) {
+                                VStack(alignment: .leading) {
+                                    Text(article.title)
+                                        .font(.headline)
+                                    Text(article.byline)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
                         }
+                        .onDelete(perform: deleteArticle)
                     }
                 }
-                .onDelete(perform: deleteArticle)
             }
             .navigationTitle("Favourite Articles")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showAlert = true
+                    }) {
+                        Image(systemName: "trash")
+                            .foregroundColor(.red)
+                    }
+                    .alert("Delete All Articles", isPresented: $showAlert) {
+                        Button("Cancel", role: .cancel) {}
+                        Button("Delete", role: .destructive, action: deleteAllArticles)
+                    } message: {
+                        Text("Are you sure you want to delete all favourite articles?")
+                    }
+                }
+            }
         }
     }
 
@@ -37,6 +62,12 @@ struct FavouriteArticlesView: View {
         for index in offsets {
             let articleToDelete = favouriteArticles[index]
             modelContext.delete(articleToDelete)
+        }
+    }
+
+    private func deleteAllArticles() {
+        for article in favouriteArticles {
+            modelContext.delete(article)
         }
     }
 
