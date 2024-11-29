@@ -110,18 +110,10 @@ struct ArticleDetailView: View {
      `removeFavourite()` to remove an article from favorites.
      */
     private func addFavourite() {
-        let favourite = FavouriteArticle(
-            id: article.id,
-            url: article.url,
-            title: article.title,
-            byline: article.byline,
-            publishedDate: article.publishedDate,
-            abstract: article.abstract,
-            imageUrl: getImageUrl()
-        )
+        let favourite = ArticleMapper.mapToFavourite(from: article)
         modelContext.insert(favourite)
         isFavourite = true
-        showAlert = true
+        showAlert = true            
     }
 
     private func removeFavourite() {

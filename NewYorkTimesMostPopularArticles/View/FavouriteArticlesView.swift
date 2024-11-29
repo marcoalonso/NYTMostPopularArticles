@@ -16,7 +16,7 @@ struct FavouriteArticlesView: View {
         NavigationView {
             List {
                 ForEach(favouriteArticles, id: \.id) { article in
-                    NavigationLink(destination: ArticleDetailView(article: convertToArticleDTO(favourite: article))) {
+                    NavigationLink(destination: ArticleDetailView(article: ArticleMapper.mapToDTO(from: article))) {
                         VStack(alignment: .leading) {
                             Text(article.title)
                                 .font(.headline)
