@@ -16,13 +16,15 @@ class FavouriteArticle {
     var byline: String
     var publishedDate: String
     var abstract: String
+    var imageUrl: String?
 
-    init(id: Int64, url: String, title: String, byline: String, publishedDate: String, abstract: String) {
+    init(id: Int64, url: String, title: String, byline: String, publishedDate: String, abstract: String, imageUrl: String?) {
         self.id = id
         self.url = url
         self.title = title
         self.byline = byline
         self.publishedDate = publishedDate
         self.abstract = abstract
+        self.imageUrl = imageUrl
     }
 }

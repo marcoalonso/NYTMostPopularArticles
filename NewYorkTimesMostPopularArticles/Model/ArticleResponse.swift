@@ -47,3 +47,9 @@ struct MediaMetadata: Decodable {
     let height: Int
     let width: Int
 }
+
+extension ArticleDTO {
+    var imageUrl: String? {
+        return media?.first?.mediaMetadata?.last?.url
+    }
+}
