@@ -7,9 +7,12 @@
 
 import SwiftUI
 import Kingfisher
+import SwiftData
 
 struct ArticleDetailView: View {
+    @Environment(\.modelContext) private var modelContext
     let article: ArticleDTO
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -31,13 +34,33 @@ struct ArticleDetailView: View {
                 Text(article.abstract)
                     .font(.body)
                     .padding(.top)
-                Link("Read Full Article", destination: URL(string: article.url)!)
-                    .padding(.top)
+                HStack {
+                    Link("Read Full Article", destination: URL(string: article.url)!)
+                    
+                    Button(action: saveArticle) {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.red)
+                            .font(.title2)
+                    }
+                    
+                }
+                .padding(.top)
             }
             .padding()
         }
         .navigationTitle("Details")
-        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func saveArticle() {
+        let favourite = FavouriteArticle(
+            id: article.id,
+            url: article.url,
+            title: article.title,
+            byline: article.byline,
+            publishedDate: article.publishedDate,
+            abstract: article.abstract
+        )
+        modelContext.insert(favourite)
     }
 }
 #Preview {

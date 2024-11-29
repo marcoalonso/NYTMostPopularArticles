@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct NewYorkTimesMostPopularArticlesApp: App {
     @StateObject private var viewModel = ArticlesViewModel(apiService: APIService())
-    
+
     var body: some Scene {
         WindowGroup {
-            ArticlesListView()
+            ContentView()
                 .environmentObject(viewModel)
         }
+        .modelContainer(for: FavouriteArticle.self) 
     }
 }
