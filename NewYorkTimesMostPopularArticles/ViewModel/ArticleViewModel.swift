@@ -7,27 +7,39 @@
 
 import Foundation
 import Combine
+import Network
 
 class ArticlesViewModel: ObservableObject {
     @Published var articles: [ArticleDTO] = []
     @Published var errorMessage: String?
-
+    @Published var isConnected: Bool = true
+    
     private let apiService: APIServiceProtocol
     private var cancellables = Set<AnyCancellable>()
-
+    private let monitor = NWPathMonitor()
+    private let queue = DispatchQueue(label: "NetworkMonitor")
+    
     init(apiService: APIServiceProtocol) {
         self.apiService = apiService
+        monitor.pathUpdateHandler = { [weak self] path in
+            DispatchQueue.main.async {
+                self?.isConnected = path.status == .satisfied
+            }
+        }
+        monitor.start(queue: queue)
     }
-
+    
     func fetchArticles(for category: String, period: Int = 7) {
-        errorMessage = nil
+        guard isConnected else { return } // No hacer la llamada si no hay conexión
+        
+        errorMessage = nil // Resetear errores previos
         apiService.fetchArticles(for: category, period: period)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { [weak self] completion in
                     switch completion {
                     case .failure(let error):
-                        self?.errorMessage = self?.mapErrorToMessage(error)
+                        self?.errorMessage = error.localizedDescription
                     case .finished:
                         break
                     }
