@@ -1,0 +1,145 @@
+{
+    "status": "OK",
+    "copyright": "Copyright (c) 2024 The New York Times Company.  All Rights Reserved.",
+    "num_results": 20,
+    "results": [
+       {
+       "uri": "nyt://article/c8f12f7e-3fc5-5712-8e1a-46d835e6b81e",
+       "url": "https://www.nytimes.com/2024/11/26/nyregion/rudy-giuliani-defamation-hearing-lawyers.html",
+       "id": 100000009846512,
+       "asset_id": 100000009846512,
+       "source": "New York Times",
+       "published_date": "2024-11-26",
+       "updated": "2024-11-27 13:52:42",
+       "section": "New York",
+       "subsection": "",
+       "nytdsection": "new york",
+       "adx_keywords": "Compensation for Damages (Law);Libel and Slander;Rumors and Misinformation;Voter Fraud (Election Fraud);Presidential Election of 2020;Legal Profession;Giuliani, Rudolph W;Freeman, Ruby;Moss, Shaye;Liman, Lewis Jeffrey;Georgia",
+       "column": null,
+       "byline": "By Stefanos Chen and Olivia Bensimon",
+       "type": "Article",
+       "title": "Rudy Giuliani Loses His Lawyers, and His Cool, in Court",
+       "abstract": "The subject of several cases, the former New York City mayor lashed out at a judge questioning why he had not forfeited personal assets as required.",
+       "des_facet": [
+         "Compensation for Damages (Law)",
+         "Libel and Slander",
+         "Rumors and Misinformation",
+         "Voter Fraud (Election Fraud)",
+         "Presidential Election of 2020",
+         "Legal Profession"
+       ],
+       "org_facet": [
+         
+       ],
+       "per_facet": [
+         "Giuliani, Rudolph W",
+         "Freeman, Ruby",
+         "Moss, Shaye",
+         "Liman, Lewis Jeffrey"
+       ],
+       "geo_facet": [
+         "Georgia"
+       ],
+       "media": [
+         {
+           "type": "image",
+           "subtype": "photo",
+           "caption": "Rudolph W. Giuliani outside a Manhattan courthouse on Tuesday. “I don’t have a car,” he had told a judge earlier. “I don't have a credit card. I don’t have cash.” ",
+           "copyright": "Sarah Yenesel/EPA, via Shutterstock",
+           "approved_for_syndication": 1,
+           "media-metadata": [
+             {
+               "url": "https://static01.nyt.com/images/2024/11/26/multimedia/26ny-giuliani-zbwt/26ny-giuliani-zbwt-thumbStandard.jpg",
+               "format": "Standard Thumbnail",
+               "height": 75,
+               "width": 75
+             },
+             {
+               "url": "https://static01.nyt.com/images/2024/11/26/multimedia/26ny-giuliani-zbwt/26ny-giuliani-zbwt-mediumThreeByTwo210.jpg",
+               "format": "mediumThreeByTwo210",
+               "height": 140,
+               "width": 210
+             },
+             {
+               "url": "https://static01.nyt.com/images/2024/11/26/multimedia/26ny-giuliani-zbwt/26ny-giuliani-zbwt-mediumThreeByTwo440.jpg",
+               "format": "mediumThreeByTwo440",
+               "height": 293,
+               "width": 440
+             }
+           ]
+         }
+       ],
+       "eta_id": 0
+     },
+        {
+           "uri": "nyt://article/9a1ff9e0-33bf-5108-8023-7929246f69f1",
+           "url": "https://www.nytimes.com/2024/11/28/us/linda-mcmahon-education-wrestling-wwe.html",
+           "id": 100000009838523,
+           "asset_id": 100000009838523,
+           "source": "New York Times",
+           "published_date": "2024-11-28",
+           "updated": "2024-11-28 16:53:58",
+           "section": "U.S.",
+           "subsection": "",
+           "nytdsection": "u.s.",
+           "adx_keywords": "Wrestling;Appointments and Executive Changes;Education (K-12);Presidential Election of 2024;Presidential Transition (US);McMahon, Linda E;McMahon, Vince;Trump, Donald J;Education Department (NYS);Sacred Heart University;Small Business Administration;World Wrestling Entertainment Inc;Connecticut",
+           "column": null,
+           "byline": "By Stephanie Saul, Zach Montague and Sharon Otterman",
+           "type": "Article",
+           "title": "Her Wrestling Empire Was Said to Harm Children. Trump Chose Her for Education.",
+           "abstract": "Linda McMahon, whose résumé mainly rests on running World Wrestling Entertainment, has faced questions for years over whether she is suitable for important education posts.",
+           "des_facet": [
+             "Wrestling",
+             "Appointments and Executive Changes",
+             "Education (K-12)",
+             "Presidential Election of 2024",
+             "Presidential Transition (US)"
+           ],
+           "org_facet": [
+             "Education Department (NYS)",
+             "Sacred Heart University",
+             "Small Business Administration",
+             "World Wrestling Entertainment Inc"
+           ],
+           "per_facet": [
+             "McMahon, Linda E",
+             "McMahon, Vince",
+             "Trump, Donald J"
+           ],
+           "geo_facet": [
+             "Connecticut"
+           ],
+           "media": [
+             {
+               "type": "image",
+               "subtype": "photo",
+               "caption": "Linda McMahon, who served in the first Trump administration, ran a wrestling organization that was criticized for producing violent and sexualized content that research suggested was harmful to children.",
+               "copyright": "Ariel Zambelich for The New York Times",
+               "approved_for_syndication": 1,
+               "media-metadata": [
+                 {
+                   "url": "https://static01.nyt.com/images/2024/11/27/multimedia/27nat-mcmahon-hzfk/27nat-mcmahon-hzfk-thumbStandard.jpg",
+                   "format": "Standard Thumbnail",
+                   "height": 75,
+                   "width": 75
+                 },
+                 {
+                   "url": "https://static01.nyt.com/images/2024/11/27/multimedia/27nat-mcmahon-hzfk/27nat-mcmahon-hzfk-mediumThreeByTwo210.jpg",
+                   "format": "mediumThreeByTwo210",
+                   "height": 140,
+                   "width": 210
+                 },
+                 {
+                   "url": "https://static01.nyt.com/images/2024/11/27/multimedia/27nat-mcmahon-hzfk/27nat-mcmahon-hzfk-mediumThreeByTwo440.jpg",
+                   "format": "mediumThreeByTwo440",
+                   "height": 293,
+                   "width": 440
+                 }
+               ]
+             }
+           ],
+           "eta_id": 0
+         }
+    ]
+}
+

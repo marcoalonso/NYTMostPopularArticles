@@ -20,14 +20,14 @@ class ArticlesViewModel: ObservableObject {
     }
 
     func fetchArticles(for category: String, period: Int = 7) {
-        errorMessage = nil // Resetear errores previos
+        errorMessage = nil
         apiService.fetchArticles(for: category, period: period)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { [weak self] completion in
                     switch completion {
                     case .failure(let error):
-                        self?.errorMessage = error.localizedDescription
+                        self?.errorMessage = self?.mapErrorToMessage(error)
                     case .finished:
                         break
                     }
