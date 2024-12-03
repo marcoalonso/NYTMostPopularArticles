@@ -21,7 +21,7 @@ struct ArticlesListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                // Picker para seleccionar la categoría
+                // Picker to select the category
                 Picker("Category", selection: $selectedCategory) {
                     Text("Most Viewed").tag("viewed")
                     Text("Most Emailed").tag("emailed")
@@ -33,7 +33,7 @@ struct ArticlesListView: View {
                     viewModel.fetchArticles(for: newValue, period: selectedPeriod)
                 }
 
-                // Picker para seleccionar el periodo
+                // Picker to select the period
                 Picker("Period", selection: $selectedPeriod) {
                     Text("1 Day").tag(1)
                     Text("7 Days").tag(7)
@@ -45,14 +45,14 @@ struct ArticlesListView: View {
                     viewModel.fetchArticles(for: selectedCategory, period: newValue)
                 }
 
-                // Mensaje de error
+                // Error message
                 if let errorMessage = viewModel.errorMessage {
                     Text(errorMessage)
                         .foregroundColor(.red)
                         .padding()
                 }
 
-                // Lista de artículos
+                // List of articles
                 if viewModel.isConnected {
                     List(viewModel.articles, id: \.id) { article in
                         NavigationLink(destination: ArticleDetailView(article: article)) {
@@ -93,39 +93,66 @@ struct ArticlesListView: View {
         }
     }
 
-    // Vista reutilizable para la fila de artículo
+    /// Creates a row view to display a single article in a list.
+    ///
+    /// This method generates a `HStack` layout to show a thumbnail image (if available),
+    /// the article's title, and its byline. The image is fetched asynchronously using the `Kingfisher`
+    /// library, and the text is styled appropriately for a headline and subheadline.
+    ///
+    /// - Parameter article: The `ArticleDTO` object representing the article to display.
+    /// - Returns: A `View` containing the layout for the article row.
     private func articleRow(article: ArticleDTO) -> some View {
         HStack {
+            // Display the thumbnail image if available.
             if let imageUrl = article.media?.first?.mediaMetadata?.first?.url {
                 KFImage(URL(string: imageUrl))
                     .resizable()
-                    .frame(width: 50, height: 50)
-                    .cornerRadius(8)
+                    .frame(width: 50, height: 50) // Thumbnail dimensions
+                    .cornerRadius(8) // Rounded corners for aesthetic
             }
+            
+            // Display the article title and byline.
             VStack(alignment: .leading) {
                 Text(article.title)
-                    .font(.headline)
+                    .font(.headline) // Main title styling
                 Text(article.byline)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .font(.subheadline) // Subtitle styling
+                    .foregroundColor(.secondary) // Secondary text color
             }
         }
     }
 
-    // Guardar todos los artículos
+    /// Saves all currently displayed articles to the favourites database.
+    ///
+    /// This method compares the articles currently displayed in the view model (`viewModel.articles`)
+    /// with the existing favourite articles in the database. If an article is not already saved,
+    /// it is added to the favourites. The method updates `alertMessage` to inform the user
+    /// whether all articles were already saved or how many new articles were successfully saved.
+    ///
+    /// - Note: This method ensures that no duplicate articles are saved.
+    ///         It triggers an alert to notify the user of the result.
     private func saveAllArticles() {
+        // Step 1: Retrieve IDs of existing favourite articles.
         let existingIDs = Set(favouriteArticles.map { $0.id })
+        
+        // Step 2: Filter out articles already saved in the favourites.
         let newArticles = viewModel.articles.filter { !existingIDs.contains(Int64($0.id)) }
-
+        
+        // Step 3: Check if there are any new articles to save.
         if newArticles.isEmpty {
+            // All articles are already saved.
             alertMessage = "All articles are already saved."
         } else {
+            // Save new articles to favourites.
             for article in newArticles {
                 let favourite = ArticleMapper.mapToFavourite(from: article)
                 modelContext.insert(favourite)
             }
+            // Update alert message with the count of saved articles.
             alertMessage = "\(newArticles.count) articles saved successfully."
         }
+        
+        // Step 4: Show the alert with the appropriate message.
         showAlert = true
     }
 }

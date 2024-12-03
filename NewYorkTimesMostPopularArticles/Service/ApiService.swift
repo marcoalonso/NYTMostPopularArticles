@@ -39,6 +39,11 @@ class APIService: APIServiceProtocol {
     private var apiKey: String {
         loadAPIKey()
     }
+    /// Fetches articles from the New York Times API based on category and period.
+    /// - Parameters:
+    ///   - category: The category of the articles ("viewed", "emailed", "shared").
+    ///   - period: The time period for the articles 1, 7, or 30 days). Default is 7 days.
+    /// - Returns: A publisher that emits a list of `ArticleDTO` on success or an `APIServiceError` on failure.
     func fetchArticles(for category: String, period: Int = 7) -> AnyPublisher<[ArticleDTO], APIServiceError> {
         let endpoint = "\(category)/\(period).json?api-key=\(apiKey)"
         guard let url = URL(string: baseUrl + endpoint) else {

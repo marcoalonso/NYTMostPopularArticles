@@ -58,6 +58,12 @@ struct FavouriteArticlesView: View {
         }
     }
 
+    /// Deletes one or more favourite articles from the database.
+    ///
+    /// This function is triggered when the user performs a swipe-to-delete action on a list row.
+    /// It retrieves the articles at the specified offsets and removes them from the SwiftData context.
+    ///
+    /// - Parameter offsets: The index set representing the positions of the articles to be deleted in the list.
     private func deleteArticle(at offsets: IndexSet) {
         for index in offsets {
             let articleToDelete = favouriteArticles[index]
@@ -65,6 +71,12 @@ struct FavouriteArticlesView: View {
         }
     }
 
+    /// Deletes all favourite articles from the database.
+    ///
+    /// This function iterates through all articles currently saved in `favouriteArticles`
+    /// and removes them from the SwiftData context.
+    ///
+    /// - Note: This is typically used for a bulk deletion operation initiated by the user.
     private func deleteAllArticles() {
         for article in favouriteArticles {
             modelContext.delete(article)

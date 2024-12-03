@@ -29,9 +29,23 @@ class ArticlesViewModel: ObservableObject {
         monitor.start(queue: queue)
     }
     
+    /// Fetches articles for a specific category and time period from the API.
+    ///
+    /// This function uses the provided `APIService` to make a network call and fetch articles
+    /// from a specified category and period. The articles are updated in the `articles` property.
+    /// If there is no internet connection, the function exits without making the API call.
+    ///
+    /// - Parameters:
+    ///   - category: A `String` representing the category of articles to fetch (e.g., "viewed", "emailed").
+    ///   - period: An `Int` representing the time period to fetch articles for, in days (default is 7 days).
+    ///
+    /// - Note:
+    ///   - The function checks the `isConnected` property to ensure there is an active internet connection before making the API request.
+    ///   - In case of an error during the network call, the error message is set in `errorMessage`.
+    ///   - The result of the API call updates the `articles` property with the fetched articles.
     func fetchArticles(for category: String, period: Int = 7) {
         guard isConnected else { return } // No hacer la llamada si no hay conexión
-        
+
         errorMessage = nil // Resetear errores previos
         apiService.fetchArticles(for: category, period: period)
             .receive(on: DispatchQueue.main)
