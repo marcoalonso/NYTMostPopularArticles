@@ -12,19 +12,6 @@ This is a technical test for a remote position for ios developer, retrieves a li
   https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=yourkey
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
-
-#### Get item
-
-```http
-  https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=yourkey
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
 
 
 
@@ -34,8 +21,18 @@ This is a technical test for a remote position for ios developer, retrieves a li
 
 
 ## Screenshots
+![image](https://github.com/user-attachments/assets/5e1ccd01-0b88-4e2a-8a6c-b301c1dccb5b)
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+
+
+![image](https://github.com/user-attachments/assets/a7085dcd-0868-401c-943e-483ec223c24f)
+
+
+
+![image](https://github.com/user-attachments/assets/fa7a85eb-5b62-469f-93f7-60d183088bc8)
+
+
 
 
 ## 🔗 Links
