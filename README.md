@@ -22,7 +22,9 @@ This is a technical test for a remote position for ios developer, retrieves a li
 
 ## Screenshots
 ![image](https://github.com/user-attachments/assets/5e1ccd01-0b88-4e2a-8a6c-b301c1dccb5b)
+![image](https://github.com/user-attachments/assets/9d86b0e2-5e8c-4c0d-867d-de97ce6c2ea1)
 
+![image](https://github.com/user-attachments/assets/962ae11f-ac22-415a-9c63-ff050b3b7b62)
 
 
 
