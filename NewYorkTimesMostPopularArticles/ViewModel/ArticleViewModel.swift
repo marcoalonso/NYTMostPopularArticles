@@ -11,6 +11,7 @@ import Network
 
 class ArticlesViewModel: ObservableObject {
     @Published var articles: [ArticleDTO] = []
+    @Published var filteredArticles: [ArticleDTO] = [] 
     @Published var errorMessage: String?
     @Published var isConnected: Bool = true
     
@@ -60,9 +61,21 @@ class ArticlesViewModel: ObservableObject {
                 },
                 receiveValue: { [weak self] articles in
                     self?.articles = articles
+                    self?.filteredArticles = articles
                 }
             )
             .store(in: &cancellables)
+    }
+    
+    func filterArticles(by keyword: String) {
+        if keyword.isEmpty {
+            filteredArticles = articles
+        } else {
+            filteredArticles = articles.filter { article in
+                article.title.localizedCaseInsensitiveContains(keyword) ||
+                article.abstract.localizedCaseInsensitiveContains(keyword)
+            }
+        }
     }
     
     private func mapErrorToMessage(_ error: APIServiceError) -> String {

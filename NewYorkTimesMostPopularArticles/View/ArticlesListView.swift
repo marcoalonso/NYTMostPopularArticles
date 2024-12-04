@@ -17,10 +17,19 @@ struct ArticlesListView: View {
     @State private var selectedPeriod: Int = 7
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
+    @State private var searchText: String = ""
 
     var body: some View {
         NavigationView {
             VStack {
+                // Search Bar
+                TextField("Search articles...", text: $searchText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .onChange(of: searchText) { _, _ in
+                        viewModel.filterArticles(by: searchText)
+                    }
+                
                 // Picker to select the category
                 Picker("Category", selection: $selectedCategory) {
                     Text("Most Viewed").tag("viewed")
@@ -54,7 +63,7 @@ struct ArticlesListView: View {
 
                 // List of articles
                 if viewModel.isConnected {
-                    List(viewModel.articles, id: \.id) { article in
+                    List(viewModel.filteredArticles, id: \.id) { article in
                         NavigationLink(destination: ArticleDetailView(article: article)) {
                             articleRow(article: article)
                         }
