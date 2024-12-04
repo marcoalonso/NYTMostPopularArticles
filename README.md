@@ -39,5 +39,8 @@ Filtering articles by keyword:
 
 ## 🔗 Links
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcoalonso/)
-[![youtube]([https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/YouTube_Logo_%282013-2017%29.svg/1280px-YouTube_Logo_%282013-2017%29.svg.png)](https://upload.wikimedia.org/wikipedia/commons/2/21/YouTube_icon_%282011-2013%29.svg))](https://www.youtube.com/channel/UCknu6vH4a8tXLFpM_uQ-hBA/)
+
+[![linkedin](https://upload.wikimedia.org/wikipedia/commons/2/21/YouTube_icon_%282011-2013%29.svg)](https://www.youtube.com/@marcoalonsoiosmar-academy)
+
+
 
